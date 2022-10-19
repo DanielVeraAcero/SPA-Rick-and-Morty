@@ -5,7 +5,8 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js'
+        filename: 'main.js',
+        clean: true,
     },
     resolve: {
         extensions: ['.js'],
@@ -13,7 +14,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js?$/,
+                test: /\.m?js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -24,7 +25,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin([
             {
-                inject: true,
+                inject: 'body',
                 template: './public/index.html',
                 filename: './index.html'
             }
